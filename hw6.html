@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ammicable Numbers</title>
+<style>
+	form {color: #FFFFFF}
+	body {background-color: #89cff0; text-align: center; font-weight: 900;}
+	#myDiv {color: #FFFFFF};
+
+</style>
+</head>
+
+<body>
+
+	<form>
+		AMMICABLE NUMBERS <br/>
+		<br/>
+		Please enter two numbers to see if they are ammicable <br/>
+		<br/>
+		Number One <input type = "text" id = "number1"><br/>
+		Number Two <input type = "text" id = "number2"><br/>
+		<input type = "button" value = "Check Numbers" onclick= "getNumber()">
+
+	</form>
+	<div id = "myDiv"></div>
+	<script language="javascript">
+
+
+
+		function getNumber() {
+
+
+			number1 = document.getElementById("number1").value;
+			number2 = document.getElementById("number2").value;
+
+			getFactors(number1, number2);
+		}
+
+		function getFactors(number1, number2) {
+			sum1 = 0;
+			sum2 = 0;
+			var factors1 = [];
+			var factors2 = [];
+			for (i = 0; i < number1; i++) {
+				if(checkFactor(number1, i) == true) {
+					sum1 += i;
+					factors1.push(i);
+				}
+			}
+
+			for (i = 0; i < number2; i++) {
+				if(checkFactor(number2, i) == true) {
+					sum2 += i;
+					factors2.push(i);
+				}
+			}
+			displayFactors(number1, number2, factors1, factors2);
+			checkSum(sum1, sum2, number1, number2);
+		}
+
+		function checkFactor(number, factor) {
+			if (number % factor == 0) {
+				return true;
+			}
+			return false;
+		}
+
+		function checkSum(sum1, sum2, number1, number2) {
+			if (sum1 == sum2) {
+				document.getElementById("myDiv").innerHTML = "The numbers " + number1 + " and " + number2 + " are ammicable.";
+			} else {
+				document.getElementById("myDiv").innerHTML = "The numbers " + number1 + " and " + number2 + " are not ammicable.";
+			}
+		}
+		
+		function displayFactors(number1, number2, factors1, factors2) {
+			alert("The factors of " + number1 + " are " + factors1 +  ".\r\n" +  "The factors of " + number2 + " are " + factors2 + ".");
+		}
+
+
+
+
+	</script>
+</body>
+
+
+</html>
